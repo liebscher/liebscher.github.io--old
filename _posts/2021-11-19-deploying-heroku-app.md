@@ -1,15 +1,18 @@
 ---
 layout: distill
-title: Deploying a Containerized Heroku App with M1
-description: 
+title: Deploying a containerized Heroku app with an Apple M1 machine
+description: the M1 is fast and furious, but bound to cause headaches
 date: 2021-11-19
+
+authors:
+  - name: A.L.
 ---
 
 It's common to want to deploy an app on the web. A plethora of services and platforms now make this easy, compared to what it would have taken 10 or 20 years ago.
 
 In this article, I'd like to outline one way to do so. Particularly, building a Python app, using Flask as a back-end server, bundling it all together with Docker, and deploying on Heroku. To add a twist, we're going to do this from a MacBook Pro with an Apple Silicon M1 chip.
 
-1. Build your app
+## 1. Build your app
 
 We're going to build a simple site that lands the user on a page, allows them fill out a form, and then view their submission.
 
@@ -19,7 +22,7 @@ We'll start with the HTML.
 
 Then we'll build our server.
 
-2. Test locally
+## 2. Test locally
 
 To test our web app locally, we can just run,
 
@@ -29,7 +32,7 @@ python app.py
 
 This launches our Flask app as a local server on a localhost port, specifically port 5000.
 
-3. Containerize your app
+## 3. Containerize your app
 
 Now that we see our app working locally, we can containerize the app. By creating a container for our app, Heroku will be faster at deploying (since it won't have to rebuild the entire app every deployment), and it will ensure dependencies and architectures are platform-agnostic.
 
@@ -71,7 +74,7 @@ To break down the arguments here,
 
 Now we can visit the exposed port and see our app live, locally.
 
-4. Push to Heroku
+## 4. Push to Heroku
 
 First, we need to create a Heroku account. After that's been setup, create an app with any name you want.
 
@@ -97,14 +100,12 @@ heroku container:release web -a xxx
 
 To open your app, try `heroku open -a xxx`.
 
-5. Share
+## 5. Share
 
 You should be seeing your site live.
 
-## Troubleshooting
+# Troubleshooting
 
-### 1. Heroku H10 error
+## 1. Heroku H10 error
 
 Notorious!
-
-### 2. 
